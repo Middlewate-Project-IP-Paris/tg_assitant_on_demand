@@ -4,3 +4,4 @@ TG_URL = 'https://api.telegram.org/bot'
 MEMBER_COUNT_METHOD = '/getChatMemberCount?chat_id='
 KAFKA_BROKER = 'localhost:9092'
 TOPIC_SUBS = 'todo'
+
