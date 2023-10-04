@@ -1,0 +1,37 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+package assistant_on_demand;
+
+
+service assistanceOnDemand {
+  rpc getChannelMeta (ChannelMetaRequest) returns (google.protobuf.Empty);
+  rpc getPostStat (PostStatRequest) returns (google.protobuf.Empty);
+  rpc getChannelSubs (ChannelSubsRequest) returns (google.protobuf.Empty);
+  rpc getPost (PostRequest) returns (google.protobuf.Empty);
+  rpc joinChannel (InviteRequest) returns (google.protobuf.Empty);
+}
+
+message ChannelMetaRequest {
+    int64 channel_id = 1;
+}
+
+message PostStatRequest {
+    int64 channel_id = 1;
+    int64 post_id = 2;
+}
+
+message ChannelSubsRequest {
+    int64 channel_id = 1;
+}
+
+message PostRequest {
+    int64 channel_id = 1;
+    int64 post_id = 2;
+}
+
+message InviteRequest {
+    string invite_link = 1;
+}

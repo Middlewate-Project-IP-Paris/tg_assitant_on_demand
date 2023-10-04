@@ -17,6 +17,7 @@ import time
 bot = telebot.TeleBot(vars.TOKEN)
 
 # print(bot.get_chat_member_count(vars.CHAT_ID))
+a = bot.create_chat_invite_link(vars.CHAT_ID).invite_link
 
 
 def one_job():
