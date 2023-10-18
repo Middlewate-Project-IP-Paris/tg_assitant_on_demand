@@ -12,7 +12,7 @@ class AssistanceOnDemandServicer(assistant_on_demand_pb2_grpc.assistanceOnDemand
     def getChannelMeta(self, request, context):
         b = BotConnection()
         print('getChannelMeta invoked \n')
-        b.getchatmembers(request.channel_id)
+        b.getchannelmeta(request.channel_id)
 
     def getPost(self, request, context):
         b = BotConnection()
@@ -32,7 +32,7 @@ class AssistanceOnDemandServicer(assistant_on_demand_pb2_grpc.assistanceOnDemand
     def joinChannel(self, request, context):
         b = BotConnection()
         print('joinChannel invoked \n')
-        b.getchatmembers(request.invite_link)
+        b.joinchannel(request.invite_link)
 
 
 def serve():

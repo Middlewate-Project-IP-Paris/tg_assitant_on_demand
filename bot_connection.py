@@ -42,6 +42,7 @@ class BotConnection:
             'channel_description': self.url.get_chat(chat_id).bio
         }
         k = publisher.Publisher()
+        print('Connected to kafka channelMeta \n')
         k.send2kafka(vars.KAFKA_CHANNEL_META_TOPIC, unit_dict)
 
     def getpoststat(self, chat_id, post_id):
