@@ -5,5 +5,6 @@ MEMBER_COUNT_METHOD = '/getChatMemberCount?chat_id='
 KAFKA_BROKER = 'localhost:29092'
 KAFKA_SUBS_COUNT_TOPIC = 'subsCount'
 KAFKA_CHANNEL_META_TOPIC = 'channelMeta'
+KAFKA_POST_STAT_TOPIC = 'postStat'
 KAFKA_POST_CONTENT_TOPIC = 'postContent'
 

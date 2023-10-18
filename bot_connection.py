@@ -54,7 +54,7 @@ class BotConnection:
             'channel_description': self.url.get_chat(chat_id).bio
         }
         k = publisher.Publisher()
-        k.send2kafka(vars.KAFKA_CHANNEL_META_TOPIC, unit_dict)
+        k.send2kafka(vars.KAFKA_POST_STAT_TOPIC, unit_dict)
 
     def getpost(self, chat_id, post_id):
         d = dt.timestamp(dt.utcnow().replace(tzinfo = pytz.utc))
