@@ -30,6 +30,7 @@ class BotConnection:
             'subsCount': self.url.get_chat_member_count(chat_id)
         }
         k = publisher.Publisher()
+        print('Connected to kafka \n')
         k.send2kafka(vars.KAFKA_SUBS_COUNT_TOPIC, unit_dict)
 
     def getchannelmeta(self, chat_id):
