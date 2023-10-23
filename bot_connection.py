@@ -25,7 +25,7 @@ class BotConnection:
 
     def getchatmembers(self, chat_id):
         unit_dict = {
-            'moment': math.floor(dt.timestamp(dt.now())),
+            'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
             'subsCount': self.url.get_chat_member_count(chat_id)
         }
@@ -35,7 +35,7 @@ class BotConnection:
 
     def getchannelmeta(self, chat_id):
         unit_dict = {
-            'moment': math.floor(dt.timestamp(dt.now())),
+            'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
             'channel_name': self.url.get_chat(chat_id).username,
             'channel_title': self.url.get_chat(chat_id).title,
@@ -47,7 +47,7 @@ class BotConnection:
 
     def getpoststat(self, chat_id, post_id):
         unit_dict = {
-            'moment': math.floor(dt.timestamp(dt.now())),
+            'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
             'post_id': post_id,
             'views': 100, #self.url.post(chat_id).username,
@@ -60,7 +60,7 @@ class BotConnection:
     def getpost(self, chat_id, post_id):
         d = dt.timestamp(dt.utcnow().replace(tzinfo = pytz.utc))
         unit_dict = {
-            'moment': math.floor(dt.timestamp(dt.now())),
+            'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
             'post_id': post_id,
             'content': get_random_string(100),  # self.url.post(chat_id).username,
