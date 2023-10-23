@@ -30,7 +30,7 @@ class BotConnection:
             'subsCount': self.url.get_chat_member_count(chat_id)
         }
         k = publisher.Publisher()
-        print('Connected to kafka \n')
+        print('Connected to kafka subsCount \n')
         k.send2kafka(vars.KAFKA_SUBS_COUNT_TOPIC, unit_dict)
 
     def getchannelmeta(self, chat_id):
@@ -46,15 +46,19 @@ class BotConnection:
         k.send2kafka(vars.KAFKA_CHANNEL_META_TOPIC, unit_dict)
 
     def getpoststat(self, chat_id, post_id):
+        d = dt.timestamp(dt.utcnow().replace(tzinfo=pytz.utc))
         unit_dict = {
             'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
             'post_id': post_id,
             'views': 100, #self.url.post(chat_id).username,
-            'channel_title': self.url.get_chat(chat_id).title,
-            'channel_description': self.url.get_chat(chat_id).bio
+            'shares': 100,
+            'publicated_at': str(d),
+            'edited_at': str(d),
+            'deleted_at': str(d),
         }
         k = publisher.Publisher()
+        print('Connected to kafka postStats \n')
         k.send2kafka(vars.KAFKA_POST_STAT_TOPIC, unit_dict)
 
     def getpost(self, chat_id, post_id):
@@ -65,9 +69,10 @@ class BotConnection:
             'post_id': post_id,
             'content': get_random_string(100),  # self.url.post(chat_id).username,
             'attachments': [get_random_string(10), get_random_string(50)], #self.url.get_chat(chat_id).title,
-            'publicated_at': d #self.url.get_chat(chat_id).bio
+            'publicated_at': str(d) #self.url.get_chat(chat_id).bio
         }
         k = publisher.Publisher()
+        print('Connected to kafka postContent \n')
         k.send2kafka(vars.KAFKA_POST_CONTENT_TOPIC, unit_dict)
 
     def joinchannel(self, url):
@@ -75,8 +80,12 @@ class BotConnection:
         for letter in url:
             if letter.isdigit():
                 id = id + letter
-        chat_id = int(id)
-        self.getchannelmeta(chat_id)
+        try:
+            chat_id = int(id)
+            self.getchannelmeta(chat_id)
+        except TypeError:
+            print("Invalid Link \n")
+
 
 
 # response = requests.get(
