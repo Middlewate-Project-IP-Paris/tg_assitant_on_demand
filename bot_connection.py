@@ -27,7 +27,7 @@ class BotConnection:
         unit_dict = {
             'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
-            'subsCount': self.url.get_chat_member_count(chat_id)
+            'subsCount': 50#self.url.get_chat_member_count(chat_id)
         }
         k = publisher.Publisher()
         print('Connected to kafka subsCount \n')
@@ -37,9 +37,9 @@ class BotConnection:
         unit_dict = {
             'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
-            'channel_name': self.url.get_chat(chat_id).username,
-            'channel_title': self.url.get_chat(chat_id).title,
-            'channel_description': self.url.get_chat(chat_id).bio
+            'channel_name': 'channel',#self.url.get_chat(chat_id).username,
+            'channel_title': 'title', #self.url.get_chat(chat_id).title,
+            'channel_description': 'description'#self.url.get_chat(chat_id).bio
         }
         k = publisher.Publisher()
         print('Connected to kafka channelMeta \n')
