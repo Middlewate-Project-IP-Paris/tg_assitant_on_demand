@@ -83,7 +83,7 @@ class BotConnection:
         try:
             chat_id = int(id)
             self.getchannelmeta(chat_id)
-        except TypeError:
+        except ValueError:
             print("Invalid Link \n")
 
 
