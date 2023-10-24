@@ -37,6 +37,7 @@ class AssistanceOnDemandServicer(assistant_on_demand_pb2_grpc.assistanceOnDemand
         b = BotConnection()
         print('joinChannel invoked \n')
         b.joinchannel(request.invite_link)
+        return assistant_on_demand_pb2_grpc.google_dot_protobuf_dot_empty__pb2.Empty()
 
 
 def serve():
