@@ -37,9 +37,9 @@ class BotConnection:
         unit_dict = {
             'moment': str(math.floor(dt.timestamp(dt.now()))),
             'channel_id': chat_id,
-            'channel_name': 'channel',#self.url.get_chat(chat_id).username,
-            'channel_title': 'title', #self.url.get_chat(chat_id).title,
-            'channel_description': 'description'#self.url.get_chat(chat_id).bio
+            'channel_name': get_random_string(10),#self.url.get_chat(chat_id).username,
+            'channel_title': get_random_string(30), #self.url.get_chat(chat_id).title,
+            'channel_description': get_random_string(40)#self.url.get_chat(chat_id).bio
         }
         k = publisher.Publisher()
         print('Connected to kafka channelMeta \n')
